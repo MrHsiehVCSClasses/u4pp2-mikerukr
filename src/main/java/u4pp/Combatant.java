@@ -5,10 +5,12 @@ private String name = "";
 private int maxHealth = 0;
 private int attack = 0;
 private int health = 0;
-    public Combatant(String name, int maxHealth, int attack){
-    name = "";
-    maxHealth = 0;
-    attack = 0;
+
+public Combatant(String name, int maxHealth, int attack){
+    this.name = name;
+    this.maxHealth = maxHealth;
+    this.attack = attack;
+    this.health = maxHealth;
     }
     public String getName(){
         return name;
@@ -23,22 +25,31 @@ private int health = 0;
         return attack;
     }
     public void setHealth(int health){
-        if(health < 0 || health > maxHealth){
-            System.out.println("Choose an integer below the max health and above 0.");
-        }else{
-            this.health = health;
+        if(health < 0){
+            this.health = 0;
+        }
+        if(health>maxHealth){
+            this.health = maxHealth;
+        }
+        if(health>=0 && health < maxHealth){
+            this.health=health;
         }
     }
     public void setMaxHealth(int health){
         if(health<=0){
-            System.out.println("Choose an integer above 0.");
-        }else{
-            maxHealth = health;
+            this.maxHealth = 1;
         }
+        if(health<maxHealth){
+            this.maxHealth=health;
+            this.health = maxHealth;
+        }else{
+            this.maxHealth=health;
+        }
+
     }
     public void setAttackPower(int attackPower){
         if(attackPower<0){
-            System.out.println("Choose an integer above -1.");
+            attack = 0;
         }else{
             attack = attackPower;
         }
@@ -60,6 +71,6 @@ private int health = 0;
         }
     }
     public String toString(){
-        System.out.println("Stats:\n" + "Health =" + health +);
+        return "Stats: " + name + "\n Health: " + health + "\n Max Health: " + maxHealth + "\n Attack Power: " + attack;
     }
 }
