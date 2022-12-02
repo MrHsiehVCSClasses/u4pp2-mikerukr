@@ -7,7 +7,6 @@ public class Fighter extends Combatant{
     private int level = 1;
     private int xp = 0;
     private int focus = 0;
-    private boolean blocking=false;
     public Fighter(String name, int maxHealth, int attack){
 super(name, maxHealth, attack);
     }
@@ -21,30 +20,33 @@ return focus;
         return level;
     }
     public boolean getIsBlocking(){
-        return blocking;
+        return blook;
     }
     public void attack(Combatant target){
         if(blook == true){
-            target.takeDamage((getAttackPower()*(focus*2))/2);
+            target.takeDamage((getAttackPower()*((int)Math.pow(2, focus)))/2);
             blook=false;
+            focus = 0;
         }else{
-    target.takeDamage(getAttackPower()*(focus*2));
+    target.takeDamage(getAttackPower()*((int)Math.pow(2, focus)));
+    focus=0;
     }}
     public void block(){
     blook = true;
     }
     public void focus(){
-        focus++;
+        focus = focus + 1;
     }
     public void gainEXP(int exp){
-        xp += exp;
-        if(xp >= level){
-            xp -= level;
+        xp = xp + exp;
+        while(xp >= level){
+            xp = xp - level;
             level++;
            this.setMaxHealth(this.getMaxHealth()+5);
            this.setAttackPower(this.getAttackPower()+1);
-           this.setHealth(this.getMaxHealth());
+           this.setHealth(getHealth()+getMaxHealth());
         }
+        
     }
     public void takeDamage(int damage){
         if(blook== true){
@@ -55,6 +57,6 @@ return focus;
         }
     }
     public String toString(){
-        return "Stats: " + name + "\n Health: " + health + "\n Max Health: " + maxHealth + "\n Attack Power: " + attack;
+        return "Stats: " + getName() + "\n Health: " + getHealth() + "\n Max Health: " + getMaxHealth() + "\n Attack Power: " + getAttackPower() + "\n Level: " + getLevel() + "\n EXP: " + getEXP() + "\n IsBlocking: " + getIsBlocking() + "\n Focus stacks: " + getFocusStacks();
     }
 }

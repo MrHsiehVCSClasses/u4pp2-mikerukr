@@ -36,10 +36,10 @@ public Combatant(String name, int maxHealth, int attack){
         }
     }
     public void setMaxHealth(int health){
-        if(health<=0){
+        if(health < 0 || health == 0){
             this.maxHealth = 1;
         }
-        if(health<maxHealth){
+        else if(health<maxHealth){
             this.maxHealth=health;
             this.health = maxHealth;
         }else{
