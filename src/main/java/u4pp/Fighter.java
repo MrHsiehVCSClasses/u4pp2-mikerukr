@@ -24,7 +24,7 @@ return focus;
     }
     public void attack(Combatant target){
         if(blook == true){
-            target.takeDamage((getAttackPower()*((int)Math.pow(2, focus)))/2);
+            target.takeDamage((int)Math.floor(getAttackPower()*((int)Math.pow(2, focus))));
             blook=false;
             focus = 0;
         }else{
