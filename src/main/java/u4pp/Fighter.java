@@ -23,14 +23,9 @@ return focus;
         return blook;
     }
     public void attack(Combatant target){
-        if(blook == true){
-            target.takeDamage((int)Math.floor(getAttackPower()*((int)Math.pow(2, focus))));
-            blook=false;
-            focus = 0;
-        }else{
     target.takeDamage(getAttackPower()*((int)Math.pow(2, focus)));
     focus=0;
-    }}
+    }
     public void block(){
     blook = true;
     }
@@ -50,7 +45,7 @@ return focus;
     }
     public void takeDamage(int damage){
         if(blook== true){
-            this.setHealth(this.getHealth()-(damage/2));
+            this.setHealth(this.getHealth()-((int)Math.floor(damage/2)));
             blook = false;
         }else{
             this.setHealth(this.getHealth()-damage);

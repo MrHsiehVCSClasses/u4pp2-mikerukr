@@ -41,7 +41,7 @@ public Combatant(String name, int maxHealth, int attack){
         }
         else if(health<maxHealth){
             this.maxHealth=health;
-            this.health = maxHealth;
+            this.health = health;//maxHealth;
         }else{
             this.maxHealth=health;
         }
@@ -58,7 +58,7 @@ public Combatant(String name, int maxHealth, int attack){
         if(damage<=0){
             setHealth(health);
         }else{
-            setHealth(health-damage);
+            setHealth(getHealth()-damage);
         }
     }
     public boolean canFight(){
