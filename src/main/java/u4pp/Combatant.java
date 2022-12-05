@@ -25,7 +25,16 @@ public Combatant(String name, int maxHealth, int attack){
         return attack;
     }
     public void setHealth(int health){
-        if(health < 0){
+        if(health<=0){
+            this.health=0;
+        }
+        else if(health >= maxHealth){
+            this.health = maxHealth;
+        }
+        else{
+            this.health = health;
+        }
+       /*  if(health < 0){
             this.health = 0;
         }
         if(health>maxHealth){
@@ -33,18 +42,31 @@ public Combatant(String name, int maxHealth, int attack){
         }
         if(health>=0 && health < maxHealth){
             this.health=health;
-        }
+        }*/
     }
     public void setMaxHealth(int health){
-        if(health < 0 || health == 0){
-            this.maxHealth = 1;
+        if(health >= maxHealth){
+            this.health=maxHealth;
+            maxHealth=health;
+        }else{
+            maxHealth=health;
+            this.health=maxHealth;
         }
-        else if(health<maxHealth){
+        if(health<=0){
+            maxHealth=1;
+            health=1;
+        }
+
+        /*if(health < 0 || health == 0){
+            this.maxHealth = 1;
+            this.health=1;
+        }
+        else if(health>maxHealth){
             this.maxHealth=health;
             this.health = health;//maxHealth;
         }else{
             this.maxHealth=health;
-        }
+        }*/
 
     }
     public void setAttackPower(int attackPower){
