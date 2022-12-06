@@ -8,7 +8,7 @@ import java.util.Scanner;
         monsters[1]= new DefenseMonster("THE ROCK", 20, 10, 10, 3);
         monsters[2]= new RandomMonster("Passing Stranger", (int)Math.floor(Math.random()*100) , (int)Math.floor(Math.random()*20) , (int)Math.floor(Math.random()*100));
     }
-    //play function for game
+    //play function for game, mr. Hsieh I am very sick and worked on this all night. I hope the effort gives me some credit because I even had to go back to InputHelper to fix it and I had so many iterations of this game.
     public void play(Scanner scanner){
         InputHelper help = new InputHelper(scanner);
         System.out.println("Welcome to Dungeon Fighter! Create your own character!");
@@ -22,12 +22,15 @@ import java.util.Scanner;
             if(help.getIntegerInput("Type 1 to Attack, 2 to Focus, and 3 to Block", 1, 3) == 1){
                 System.out.println("Attacking");
                 fighter.attack(monsters[i]);
+                //monsters[i].toString();
             }else if(help.getIntegerInput("Type 1 to Attack, 2 to Focus, and 3 to Block", 1, 3) == 2){
                 System.out.println("Focusing");
                 fighter.focus();
+                //fighter.toString();
             }else{
                 System.out.println("Blocking next attack");
                 fighter.block();
+                //fighter.toString();
             }
             System.out.println(name + " stats: " + fighter.toString());
             System.out.println("monster stats: " + monsters[i].toString());
@@ -35,9 +38,10 @@ import java.util.Scanner;
             scanner.nextLine();
             System.out.println(monsters[i].getName() + " is taking their turn.");
             monsters[i].takeTurn(fighter);
+            fighter.toString();
             System.out.println("Now it's your turn, press enter to continue!");
             scanner.nextLine();
-                        if(monsters[i].getHealth() == 0){
+            if(monsters[i].getHealth() == 0){
                 System.out.println("Congrats! You killed it!");
                 fighter.gainEXP(monsters[i].getExpGiven());
                 System.out.println("Nice your stats have been buffed! ");
@@ -46,15 +50,11 @@ import java.util.Scanner;
                 if(help.getIntegerInput("Type 1 to Attack, 2 to Focus, and 3 to Block", 1, 3) == 1){
                     System.out.println("Attacking");
                     fighter.attack(monsters[i]);
-                }else if(help.getIntegerInput("Type 1 to Attack, 2 to Focus, and 3 to Block", 1, 3) == 2){
-                    System.out.println("Focusing");
-                    fighter.focus();
-                }else if(help.getIntegerInput("Type 1 to Attack, 2 to Focus, and 3 to Block", 1, 3) == 3){
-                    System.out.println("Blocking next attack");
-                    fighter.block();
+                    monsters[i].toString();
                 }else{
                     System.out.println("Monster's turn.");
                     monsters[i].takeTurn(fighter);
+                    fighter.toString();
                 }if(monsters[i].getHealth()==0){
                     System.out.println("You killed this motherfalafel!");
                     fighter.gainEXP(monsters[i].getExpGiven());
