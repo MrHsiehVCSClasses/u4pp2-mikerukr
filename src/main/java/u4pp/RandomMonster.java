@@ -15,6 +15,6 @@ public class RandomMonster extends Monster {
     }
     //returns stats of randommonster
     public String toString(){
-        return "Stats: " + getName() + "\n Health: " + getHealth() + "\n Max Health: " + getMaxHealth() + "\n Attack Power: " + getAttackPower() + "\n EXP: " + getExpGiven() + "Only has 50% chance of attacking.";
+        return "Stats: " + getName() + "\n Health: " + getHealth() + "\n Max Health: " + getMaxHealth() + "\n Attack Power: " + getAttackPower() + "\n EXP: " + getExpGiven() + "\n Only has 50% chance of attacking.";
     }
 }
